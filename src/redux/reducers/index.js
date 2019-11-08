@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
-import roomsState from "./roomsReducer";
-const RootReducer = combineReducers({
-  roomsState
+
+const rootReducer = combineReducers({
+  auth: []
 });
 
-export default RootReducer;
+export default rootReducer;
