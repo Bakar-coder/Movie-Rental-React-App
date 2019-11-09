@@ -1,0 +1,49 @@
+:root {
+    --defaultYellow: #ffcf43;
+    --defaultBlue: #01345b;
+    --lightBlue: #5ce0d8;
+    --white: #fff;
+    --light: #f7f7f7;
+    --black: #222;
+    --greyText: #777;
+    --mainGrey: #ececec;
+    --darkGrey: #f8f8f8;
+    --blackColor: #000;
+    --mainTransition: all 0.3s linear;
+    --mainSpacing: 3px;
+    --lightShadow: 0.3rem 0.3rem 0.6rem 0.2rem rgba(0, 0, 0, 0.1);
+    --darkShadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: 'Lato', sans-serif;
+    line-height: 1.6;
+    color: var(--greyText);
+    height: 100%;
+}
+
+body ul {
+    list-style: none;
+}
+
+body a {
+    text-decoration: none;
+}
+
+.container {
+    max-width: 120rem;
+    width: calc(100% - 2rem);
+    margin: auto;
+}

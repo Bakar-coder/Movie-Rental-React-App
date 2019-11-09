@@ -1,13 +1,17 @@
-import React, { Fragment } from "react";
+import React from "react";
+import { Route, Switch } from 'react-router-dom'
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import Layout from "./components/layouts/layout";
+import Home from "./pages/Home";
 const App = () => {
   return (
-    <Fragment>
+      <Layout>
       <ToastContainer />
-      <h1>App</h1>
-    </Fragment>
+        <Switch>
+          <Route  exact  path='/'  component={Home}/>
+        </Switch>
+      </Layout>
   );
 };
 
