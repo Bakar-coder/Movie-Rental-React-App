@@ -36,6 +36,10 @@
     font-size: 2.8rem;
 }
 
+.side-nav {
+    display: none;
+}
+
 @media screen and (max-width: 768px) {
 
     .menu {
@@ -70,6 +74,7 @@
     }
 
     .side-nav {
+        display: block;
         position: absolute;
         top: 0;
         left: -100%;

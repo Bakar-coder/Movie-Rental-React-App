@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Movies from "../components/movies/movies";
-import { getMovies, getGenres } from "../redux/actions";
+import { getMovies, getGenres, deleteMovie, likeMovie } from "../redux/actions";
 import { getMovies as allMovies } from "../services/fakeMovieService";
 import { getGenres as allGenres } from "../services/fakeGenreService";
 
-const MoviesContainer = ({ movies, genres, getMovies, getGenres }) => {
+const MoviesContainer = ({ movies, genres, getMovies, getGenres, deleteMovie, likeMovie }) => {
   useEffect(() => {
     const movies = allMovies();
     const genres = allGenres();
@@ -16,7 +16,7 @@ const MoviesContainer = ({ movies, genres, getMovies, getGenres }) => {
 
   return (
     <div>
-      <Movies movies={movies} genres={genres} />
+      <Movies movies={movies} genres={genres} deleteMovie={deleteMovie} likeMovie={likeMovie} />
     </div>
   );
 };
@@ -27,7 +27,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ getMovies, getGenres }, dispatch);
+  bindActionCreators({ getMovies, getGenres, deleteMovie, likeMovie }, dispatch);
 
 export default connect(
   mapStateToProps,

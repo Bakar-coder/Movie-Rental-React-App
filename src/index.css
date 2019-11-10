@@ -8,11 +8,12 @@
     --greyText: #777;
     --mainGrey: #ececec;
     --darkGrey: #f8f8f8;
+    --danger: #fe4a49;
     --blackColor: #000;
     --mainTransition: all 0.3s linear;
     --mainSpacing: 3px;
     --lightShadow: 0.3rem 0.3rem 0.6rem 0.2rem rgba(0, 0, 0, 0.1);
-    --darkShadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    --boxShadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
 }
 
 *, *::before, *::after {
@@ -32,7 +33,9 @@ body {
     line-height: 1.6;
     color: var(--greyText);
     height: 100%;
+    position: relative;
 }
+
 
 body ul {
     list-style: none;
@@ -46,4 +49,60 @@ body a {
     max-width: 120rem;
     width: calc(100% - 2rem);
     margin: auto;
+}
+
+.btn {
+    padding: .8rem 2rem;
+    border-radius: .4rem;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.btn-primary {
+    background-color: var(--defaultBlue);
+    color: var(--white);
+}
+
+.btn-danger {
+    background-color: var(--danger);
+    color: var(--white);
+}
+
+.table {
+    width: 100%;
+    margin-top: 2rem;
+    box-shadow: var(--boxShadow);
+    padding: 2rem;
+}
+
+.table tr {
+    text-align: left;
+
+}
+
+.table thead{
+    color: var(--defaultBlue);
+    font-size: 1.8rem;
+    text-transform: uppercase;
+}
+
+
+.table th , .table td {
+    padding: 1rem 1.5rem;
+}
+
+
+.heart {
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.heart-full {
+   color: var(--danger);
+}
+
+.total-movies {
+    padding: 2rem;
+    box-shadow: var(--boxShadow);
 }

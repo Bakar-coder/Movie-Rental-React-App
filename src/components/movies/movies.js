@@ -2,11 +2,11 @@ import React, { Fragment } from "react";
 import Movie from "./movie";
 
 
-const Movies = ({movies, genres}) => {
+const Movies = ({movies, genres, deleteMovie, likeMovie}) => {
   return (
-    <Fragment>
-      <Movie movies={movies} genres={genres}/>
-    </Fragment>
+    <div className='container'>
+      <Movie movies={movies} genres={genres} deleteMovie={deleteMovie} likeMovie={likeMovie}/>
+    </div>
   );
 };
 

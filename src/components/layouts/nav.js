@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {Fragment,  useState } from "react";
 import { Link } from "react-router-dom";
 import { MdMenu } from "react-icons/md";
 import SideDraw from "./sideNav";
@@ -14,6 +14,7 @@ const Nav = () => {
   };
 
   return (
+    <Fragment>
     <div className="navbar">
       <div className="container navbar-content">
         <div className="logo">
@@ -41,8 +42,9 @@ const Nav = () => {
           </li>
         </ul>
       </div>
-      <SideDraw isOpen={state.isOpen} onToggle={toggleNav} />
     </div>
+      <SideDraw isOpen={state.isOpen} onToggle={toggleNav} />
+    </Fragment>
   );
 };
 
