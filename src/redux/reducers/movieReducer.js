@@ -2,11 +2,16 @@ import {
   GET_GENRES,
   GET_MOVIES,
   MOVIE_DELETE,
-  LIKE_MOVIE
+  LIKE_MOVIE,
+  SET_CURRENT,
+  SET_GENRE
 } from "../actions/types";
 const movieState = {
   movies: [],
-  genres: []
+  genres: [],
+  selectedGenre: null,
+  pageSize: 4,
+  currentPage: 1
 };
 
 export default (state = movieState, action) => {
@@ -36,6 +41,16 @@ export default (state = movieState, action) => {
       return {
         ...state,
         movies: allMovies
+      };
+    case SET_CURRENT:
+      return {
+        ...state,
+        currentPage: payload
+      };
+    case SET_GENRE:
+      return {
+        ...state,
+        selectedGenre: payload
       };
     default:
       return state;

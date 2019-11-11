@@ -13,7 +13,7 @@
     --mainTransition: all 0.3s linear;
     --mainSpacing: 3px;
     --lightShadow: 0.3rem 0.3rem 0.6rem 0.2rem rgba(0, 0, 0, 0.1);
-    --boxShadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    --boxShadow: 0 .5rem 1rem rgba(0, 0, 0, 0.1);
 }
 
 *, *::before, *::after {
@@ -45,6 +45,12 @@ body a {
     text-decoration: none;
 }
 
+.movies-section {
+    display: grid;
+    grid-template-columns: 22% 77%;
+    grid-gap: 1%;
+}
+
 .container {
     max-width: 120rem;
     width: calc(100% - 2rem);
@@ -69,11 +75,21 @@ body a {
     color: var(--white);
 }
 
-.table {
+.table, .genres {
     width: 100%;
-    margin-top: 2rem;
+    margin-top: 1rem;
     box-shadow: var(--boxShadow);
     padding: 2rem;
+}
+
+.genres {
+    padding: 0;
+}
+
+.genres ul li {
+    line-height: 2rem;
+    padding: 1.5rem 2rem;
+    cursor: pointer;
 }
 
 .table tr {
@@ -102,7 +118,24 @@ body a {
    color: var(--danger);
 }
 
-.total-movies {
+.total-movies{
+    margin-top: 1rem;
     padding: 2rem;
     box-shadow: var(--boxShadow);
+}
+
+
+.active {
+    background-color: var(--defaultBlue);
+    color: var(--white);
+}
+
+.genres-header {
+    padding: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+    .movies-section {
+        grid-template-columns: 1fr;
+    }
 }

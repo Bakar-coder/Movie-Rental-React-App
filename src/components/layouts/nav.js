@@ -18,7 +18,7 @@ const Nav = () => {
     <div className="navbar">
       <div className="container navbar-content">
         <div className="logo">
-          <h3>Logo</h3>
+          <Link to='/'><h3>Movie Rental</h3></Link>
         </div>
         <MdMenu className="menu" onClick={toggleNav} />
         <ul className="list-group">

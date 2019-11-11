@@ -1,0 +1,23 @@
+.pagination {
+    margin-top: 1rem;
+    padding: 1rem;
+}
+
+.page-item {
+    display: inline-block;
+    width: 4rem;
+    height: 4rem;
+    cursor: pointer;
+    margin-right: 1rem;
+    border: 1px solid rgba(1, 52, 91, .2);
+    border-radius: 50%;
+    box-shadow: var(--boxShadow);
+    position: relative;
+}
+
+.page-link {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
