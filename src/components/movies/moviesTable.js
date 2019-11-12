@@ -1,15 +1,52 @@
 import React from "react";
+import { MdExpandLess, MdExpandMore } from "react-icons/md";
 import Like from "../common/like";
 
-const MoviesTable = ({ movies, handleDelete, likeMovie }) => {
+const MoviesTable = ({
+  movies,
+  handleDelete,
+  likeMovie,
+  onSort,
+  sortColumn
+}) => {
   return (
     <table className="table">
       <thead>
         <tr>
-          <th>Title</th>
-          <th>Genre</th>
-          <th>Stock</th>
-          <th>Rate</th>
+          <th onClick={() => onSort("title")}>
+            Title{" "}
+            {sortColumn.path === "title" && sortColumn.order === "asc" ? (
+              <MdExpandMore />
+            ) : (
+              <MdExpandLess />
+            )}
+          </th>
+          <th onClick={() => onSort("genre.name")}>
+            Genre{" "}
+            {sortColumn.path === "genre.name" && sortColumn.order === "asc" ? (
+              <MdExpandMore />
+            ) : (
+              <MdExpandLess />
+            )}
+          </th>
+          <th onClick={() => onSort("numberInStock")}>
+            Stock{" "}
+            {sortColumn.path === "numberInStock" &&
+            sortColumn.order === "asc" ? (
+              <MdExpandMore />
+            ) : (
+              <MdExpandLess />
+            )}
+          </th>
+          <th onClick={() => onSort("dailyRentalRate")}>
+            Rate{" "}
+            {sortColumn.path === "dailyRentalRate" &&
+            sortColumn.order === "asc" ? (
+              <MdExpandMore />
+            ) : (
+              <MdExpandLess />
+            )}
+          </th>
           <th />
           <th />
         </tr>

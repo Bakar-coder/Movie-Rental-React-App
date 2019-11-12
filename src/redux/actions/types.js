@@ -6,3 +6,4 @@ export const MOVIE_DELETE = 'MOVIE_DELETE';
 export const LIKE_MOVIE = 'LIKE_MOVIE';
 export const SET_CURRENT = 'SET_CURRENT';
 export const SET_GENRE = 'SET_GENRE';
+export const SET_COLUMN = 'SET_COLUMN';

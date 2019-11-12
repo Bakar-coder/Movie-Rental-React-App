@@ -8,7 +8,8 @@ import {
   deleteMovie,
   likeMovie,
   setCurrent,
-  setSelectedGenre
+  setSelectedGenre,
+  set_column
 } from "../redux/actions";
 import { getMovies as allMovies } from "../services/fakeMovieService";
 import { getGenres as allGenres } from "../services/fakeGenreService";
@@ -24,12 +25,13 @@ const MoviesContainer = ({
   currentPage,
   setCurrent,
   selectedGenre,
-  setSelectedGenre
+  setSelectedGenre,
+  sortColumn,
+  set_column
 }) => {
-
   useEffect(() => {
     const movies = allMovies();
-    const genres = [{ name: 'All Genres' },...allGenres()];
+    const genres = [{ _id: "", name: "All Genres" }, ...allGenres()];
     getMovies(movies);
     getGenres(genres);
   }, [getMovies, getGenres]);
@@ -46,6 +48,8 @@ const MoviesContainer = ({
         setCurrent={setCurrent}
         selectedGenre={selectedGenre}
         setSelectedGenre={setSelectedGenre}
+        set_column={set_column}
+        sortColumn={sortColumn}
       />
     </div>
   );
@@ -56,7 +60,8 @@ const mapStateToProps = state => ({
   genres: state.movies.genres,
   pageSize: state.movies.pageSize,
   currentPage: state.movies.currentPage,
-  selectedGenre: state.movies.selectedGenre
+  selectedGenre: state.movies.selectedGenre,
+  sortColumn: state.movies.sortColumn
 });
 
 const mapDispatchToProps = dispatch =>
@@ -67,7 +72,8 @@ const mapDispatchToProps = dispatch =>
       deleteMovie,
       likeMovie,
       setCurrent,
-      setSelectedGenre
+      setSelectedGenre,
+      set_column
     },
     dispatch
   );

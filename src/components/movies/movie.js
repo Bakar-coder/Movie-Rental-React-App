@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import Like from "../common/like";
+import _ from "lodash";
 import Pagination from "../common/pagination";
 import { paginate } from "../../utils/paginate";
 import ListGroup from "../movies/listGroup";
@@ -14,7 +14,9 @@ const Movie = ({
   currentPage,
   setCurrent,
   selectedGenre,
-  setSelectedGenre
+  setSelectedGenre,
+  set_column,
+  sortColumn
 }) => {
   const handleDelete = movie => {
     deleteMovie(movie);
@@ -29,6 +31,10 @@ const Movie = ({
     setCurrent(1);
   };
 
+  const handleSort = path => {
+    set_column(path);
+  };
+
   if (allMovies.length === 0)
     return (
       <div className="total-movies">
@@ -41,7 +47,9 @@ const Movie = ({
       ? allMovies.filter(m => m.genre._id === selectedGenre._id)
       : allMovies;
 
-  const movies = paginate(filtered, currentPage, pageSize);
+  const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);
+
+  const movies = paginate(sorted, currentPage, pageSize);
 
   return (
     <Fragment>
@@ -59,6 +67,8 @@ const Movie = ({
             movies={movies}
             handleDelete={handleDelete}
             likeMovie={likeMovie}
+            onSort={handleSort}
+            sortColumn={sortColumn}
           />
           <div className="paginate">
             <Pagination

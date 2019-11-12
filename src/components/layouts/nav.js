@@ -35,10 +35,10 @@ const Nav = () => {
             <Link to="/add-product">Add-product</Link>
           </li>
           <li className="list-item">
-            <Link to="/register">Register</Link>
+            <Link to="/users/register">Register</Link>
           </li>
           <li className="list-item">
-            <Link to="/Login">Login</Link>
+            <Link to="/users/Login">Login</Link>
           </li>
         </ul>
       </div>

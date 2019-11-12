@@ -10,7 +10,10 @@ const Movies = ({
   currentPage,
   setCurrent,
   selectedGenre,
-  setSelectedGenre
+  setSelectedGenre,
+  sortMovies,
+  set_column,
+  sortColumn
 }) => {
   return (
     <div className="container">
@@ -24,6 +27,9 @@ const Movies = ({
         setCurrent={setCurrent}
         selectedGenre={selectedGenre}
         setSelectedGenre={setSelectedGenre}
+        sortMovies={sortMovies}
+        set_column={set_column}
+        sortColumn={sortColumn}
       />
     </div>
   );
