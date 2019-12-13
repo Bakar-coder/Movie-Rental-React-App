@@ -4,6 +4,7 @@ import Pagination from "../common/pagination";
 import { paginate } from "../../utils/paginate";
 import ListGroup from "../movies/listGroup";
 import MoviesTable from "../movies/moviesTable";
+import FilterMovies from "../filter/filterMovies";
 
 const Movie = ({
   movies: allMovies,
@@ -56,6 +57,7 @@ const Movie = ({
       <div className="total-movies">
         <p>Showing {filtered.length} movies in the database.</p>
       </div>
+        <FilterMovies/>
       <div className="movies-section">
         <ListGroup
           items={genres}

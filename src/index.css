@@ -1,6 +1,6 @@
 :root {
   --defaultYellow: #ffcf43;
-  --defaultBlue: #01345b;
+  --defaultBlue: #5c67b6;
   --lightBlue: #5ce0d8;
   --white: #fff;
   --light: #f7f7f7;
@@ -8,7 +8,7 @@
   --greyText: #777;
   --mainGrey: #ececec;
   --darkGrey: #f8f8f8;
-  --danger: #fe4a49;
+  --danger: #ff8888;
   --blackColor: #000;
   --mainTransition: all 0.3s linear;
   --mainSpacing: 3px;
@@ -75,6 +75,16 @@ body a {
 .btn-danger {
   background-color: var(--danger);
   color: var(--white);
+}
+
+.danger {
+  background-color: var(--danger);
+  color: var(--white);
+}
+
+.table-container {
+  overflow-x: auto;
+  max-width: 100%;
 }
 
 .table,
@@ -146,13 +156,13 @@ body a {
 }
 
 .form button {
-    padding: 1.2rem 3.6rem;
-    border-radius: .6rem;
-    outline: none;
-    background-color: var(--defaultBlue);
-    color: var(--white);
-    border: none;
-    cursor: pointer;
+  padding: 1.2rem 3.6rem;
+  border-radius: 0.6rem;
+  outline: none;
+  background-color: var(--defaultBlue);
+  color: var(--white);
+  border: none;
+  cursor: pointer;
 }
 
 .form-title {
@@ -174,6 +184,18 @@ body a {
   border: 1px solid rgba(0, 0, 0, 0.1);
   outline: none;
   font-size: inherit;
+}
+
+.page-not-found {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-not-found img {
+  height: 100%;
+  max-width: 100%;
 }
 
 @media screen and (max-width: 768px) {

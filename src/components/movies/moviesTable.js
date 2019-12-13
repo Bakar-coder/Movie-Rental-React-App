@@ -10,7 +10,7 @@ const MoviesTable = ({
   sortColumn
 }) => {
   return (
-    <table className="table">
+    <table className="table table-container">
       <thead>
         <tr>
           <th onClick={() => onSort("title")}>

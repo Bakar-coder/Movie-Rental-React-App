@@ -1,42 +1,58 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { toast } from "react-toastify";
-import { isValidEmail } from "../../utils/emailValidation";
+import { validateUserRegister } from "../../utils/Validation";
+import "./form.css";
 
 const Register = ({ auth }) => {
   const [user, setUser] = useState({
-    name: "",
-    username: "",
-    email: "",
-    password: "",
-    password2: ""
+    account: { name: "", username: "", email: "", password: "", password2: "" },
+    errors: {}
   });
 
   const handleChange = e => {
     setUser({
       ...user,
-      [e.target.name]: e.target.value
+      account: {
+        ...user.account,
+        [e.target.name]: e.target.value
+      }
     });
   };
 
-  const { name, username, email, password, password2 } = user;
+  const Validation = user => {
+    const { error } = validateUserRegister(user.account);
+    if (!error) return null;
+    const errors = {};
+    error.details.map(item => (errors[item.path[0]] = item.message));
+    return errors;
+  };
+
+  const { name, username, email, password, password2 } = user.account;
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (!name) return toast.error(" Name is not allowed empty!");
-    if (!username) return toast.error(" Username is not allowed empty!");
-    if (!email) return toast.error(" Email is not allowed empty!");
-    if (!password) return toast.error(" Password is not allowed empty!");
-    if (password.length < 8) return toast.error(" Password must be at least 8 characters.");
-    if (!password2) return toast.error(" Confirm password");
-    if (username.length < 3) return toast.error("Username must be at least 3 characters.");
-    if (!isValidEmail(email)) return toast.error("Invalid Email.");
-    if (password !== password2)
-      return toast.error("Passwords don't match.");
-    console.log(user);
+    const errors = Validation(user);
+    if (errors !== {}) {
+      setUser({ ...user, errors });
+      setTimeout(() => {
+        setUser({ ...user, errors: {} });
+      }, 5000);
+    }
+    if (user.account.password !== user.account.password2) {
+      setUser({
+        ...user,
+        errors: {
+          password2:
+            "Passwords't match, please enter the correct password to continue."
+        }
+      });
+      setTimeout(() => {
+        setUser({ ...user, errors: {} });
+      }, 5000);
+    }
+    console.log(user.account);
   };
-
 
   return (
     <form className="form" onSubmit={handleSubmit}>
@@ -44,10 +60,17 @@ const Register = ({ auth }) => {
         <h3>Sign Up</h3>
       </div>
       <div className="form-group">
+        <label
+          htmlFor="name"
+          className={user.errors && user.errors.name ? "danger" : ""}
+        >
+          {user.errors !== {} && user.errors.name ? user.errors.name : null}
+        </label>
         <input
           type="text"
           className="form-control"
           name="name"
+          id="name"
           placeholder="Full Name"
           value={name}
           onChange={handleChange}
@@ -55,6 +78,14 @@ const Register = ({ auth }) => {
       </div>
 
       <div className="form-group">
+        <label
+          htmlFor="name"
+          className={user.errors && user.errors.username ? "danger" : ""}
+        >
+          {user.errors !== {} && user.errors.username
+            ? user.errors.username
+            : null}
+        </label>
         <input
           type="text"
           className="form-control"
@@ -66,6 +97,12 @@ const Register = ({ auth }) => {
       </div>
 
       <div className="form-group">
+        <label
+          htmlFor="name"
+          className={user.errors && user.errors.email ? "danger" : ""}
+        >
+          {user.errors !== {} && user.errors.email ? user.errors.email : null}
+        </label>
         <input
           type="email"
           className="form-control"
@@ -77,6 +114,14 @@ const Register = ({ auth }) => {
       </div>
 
       <div className="form-group">
+        <label
+          htmlFor="name"
+          className={user.errors && user.errors.password ? "danger" : ""}
+        >
+          {user.errors !== {} && user.errors.password
+            ? user.errors.password
+            : null}
+        </label>
         <input
           type="password"
           className="form-control"
@@ -88,6 +133,14 @@ const Register = ({ auth }) => {
       </div>
 
       <div className="form-group">
+        <label
+          htmlFor="name"
+          className={user.errors && user.errors.password2 ? "danger" : ""}
+        >
+          {user.errors !== {} && user.errors.password2
+            ? user.errors.password2
+            : null}
+        </label>
         <input
           type="password"
           className="form-control"
@@ -109,7 +162,4 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({}, dispatch);
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Register);
+export default connect(mapStateToProps, mapDispatchToProps)(Register);
