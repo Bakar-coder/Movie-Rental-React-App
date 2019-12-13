@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import { registerUser } from "../../redux/actions";
 import { validateUserRegister } from "../../utils/Validation";
 import "./form.css";
 
-const Register = ({ auth }) => {
+const Register = ({ auth, history, registerUser }) => {
   const [user, setUser] = useState({
     account: { name: "", username: "", email: "", password: "", password2: "" },
     errors: {}
@@ -39,19 +40,24 @@ const Register = ({ auth }) => {
         setUser({ ...user, errors: {} });
       }, 5000);
     }
-    if (user.account.password !== user.account.password2) {
+    if (
+      user.account.password2 &&
+      user.account.password !== user.account.password2
+    ) {
       setUser({
         ...user,
         errors: {
           password2:
-            "Passwords't match, please enter the correct password to continue."
+            "Passwords don't match, please enter the correct password to continue."
         }
       });
       setTimeout(() => {
         setUser({ ...user, errors: {} });
       }, 5000);
     }
-    console.log(user.account);
+
+    const { account } = user;
+    return user.errors === {} && registerUser(account, history);
   };
 
   return (
@@ -160,6 +166,7 @@ const mapStateToProps = state => ({
   auth: state.auth
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators({}, dispatch);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ registerUser }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register);

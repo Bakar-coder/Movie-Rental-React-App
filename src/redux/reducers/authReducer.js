@@ -1,6 +1,9 @@
+import {} from "../actions/types";
+
 const authState = {
   isAuth: false,
-  user: null
+  user: null,
+  errors: null
 };
 
 export default (state = authState, action) => {
