@@ -17,6 +17,7 @@ import { getGenres as allGenres } from "../services/fakeGenreService";
 const MoviesContainer = ({
   movies,
   genres,
+  filtered,
   getMovies,
   getGenres,
   deleteMovie,
@@ -41,6 +42,7 @@ const MoviesContainer = ({
       <Movies
         movies={movies}
         genres={genres}
+        filtered={filtered}
         deleteMovie={deleteMovie}
         likeMovie={likeMovie}
         pageSize={pageSize}
@@ -58,6 +60,7 @@ const MoviesContainer = ({
 const mapStateToProps = state => ({
   movies: state.movies.movies,
   genres: state.movies.genres,
+  filtered: state.movies.filtered,
   pageSize: state.movies.pageSize,
   currentPage: state.movies.currentPage,
   selectedGenre: state.movies.selectedGenre,
@@ -78,7 +81,4 @@ const mapDispatchToProps = dispatch =>
     dispatch
   );
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(MoviesContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(MoviesContainer);

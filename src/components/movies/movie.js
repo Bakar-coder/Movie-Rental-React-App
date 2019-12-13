@@ -9,6 +9,7 @@ import FilterMovies from "../filter/filterMovies";
 const Movie = ({
   movies: allMovies,
   genres,
+  filtered: allFiltered,
   deleteMovie,
   likeMovie,
   pageSize,
@@ -57,7 +58,7 @@ const Movie = ({
       <div className="total-movies">
         <p>Showing {filtered.length} movies in the database.</p>
       </div>
-        <FilterMovies/>
+      <FilterMovies />
       <div className="movies-section">
         <ListGroup
           items={genres}
@@ -67,6 +68,7 @@ const Movie = ({
         <div>
           <MoviesTable
             movies={movies}
+            filtered={allFiltered}
             handleDelete={handleDelete}
             likeMovie={likeMovie}
             onSort={handleSort}

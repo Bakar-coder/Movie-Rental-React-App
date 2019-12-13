@@ -5,11 +5,14 @@ import {
   LIKE_MOVIE,
   SET_CURRENT,
   SET_GENRE,
-  SET_COLUMN
+  SET_COLUMN,
+  SEARCH_ITEM,
+  SEARCH_CLEAR
 } from "../actions/types";
 const movieState = {
   movies: [],
   genres: [],
+  filtered: null,
   selectedGenre: null,
   pageSize: 4,
   currentPage: 1,
@@ -53,6 +56,19 @@ export default (state = movieState, action) => {
       return {
         ...state,
         selectedGenre: payload
+      };
+    case SEARCH_ITEM:
+      return {
+        ...state,
+        filtered: [...state.movies].filter(movie => {
+          const regex = new RegExp(`${payload}`, "gi");
+          return movie.title.match(regex) || movie.genre.name.match(regex);
+        })
+      };
+    case SEARCH_CLEAR:
+      return {
+        ...state,
+        filtered: null
       };
     case SET_COLUMN:
       const sortColumn = { ...state.sortColumn };

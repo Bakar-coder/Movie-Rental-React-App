@@ -4,6 +4,7 @@ import Movie from "./movie";
 const Movies = ({
   movies,
   genres,
+  filtered,
   deleteMovie,
   likeMovie,
   pageSize,
@@ -20,6 +21,7 @@ const Movies = ({
       <Movie
         movies={movies}
         genres={genres}
+        filtered={filtered}
         deleteMovie={deleteMovie}
         likeMovie={likeMovie}
         pageSize={pageSize}

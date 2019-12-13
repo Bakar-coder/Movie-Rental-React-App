@@ -9,3 +9,5 @@ export const SET_CURRENT = "SET_CURRENT";
 export const SET_GENRE = "SET_GENRE";
 export const SET_COLUMN = "SET_COLUMN";
 export const SET_ERRORS = "SET_ERRORS";
+export const SEARCH_ITEM = "SEARCH_ITEM";
+export const SEARCH_CLEAR = "SEARCH_CLEAR";

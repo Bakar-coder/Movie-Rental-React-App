@@ -8,7 +8,9 @@ import {
   SET_COLUMN,
   REGISTER_SUCCESS,
   REGISTER_FAIL,
-  SET_ERRORS
+  SET_ERRORS,
+  SEARCH_ITEM,
+  SEARCH_CLEAR
 } from "./types";
 import axios from "axios";
 axios.defaults.baseURL = "http://localhost:5000/api";
@@ -20,6 +22,8 @@ const likeMovie = movie => ({ type: LIKE_MOVIE, payload: movie });
 const setCurrent = page => ({ type: SET_CURRENT, payload: page });
 const setSelectedGenre = genre => ({ type: SET_GENRE, payload: genre });
 const set_column = path => ({ type: SET_COLUMN, payload: path });
+const searchMovie = text => ({ type: SEARCH_ITEM, payload: text });
+const clearSearch = text => ({ type: SEARCH_CLEAR });
 
 const registerUser = (user, history) => async dispatch => {
   console.log(user);
@@ -49,5 +53,7 @@ export {
   likeMovie,
   setCurrent,
   setSelectedGenre,
-  set_column
+  set_column,
+  searchMovie,
+  clearSearch
 };

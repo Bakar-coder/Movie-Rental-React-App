@@ -4,6 +4,7 @@ import Like from "../common/like";
 
 const MoviesTable = ({
   movies,
+  filtered,
   handleDelete,
   likeMovie,
   onSort,
@@ -52,7 +53,7 @@ const MoviesTable = ({
         </tr>
       </thead>
       <tbody>
-        {movies.map(movie => (
+        {(filtered ? filtered : movies).map(movie => (
           <tr key={movie._id}>
             <td>{movie.title}</td>
             <td>{movie.genre.name}</td>
