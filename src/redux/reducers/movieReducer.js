@@ -1,3 +1,4 @@
+import _ from "lodash";
 import {
   GET_GENRES,
   GET_MOVIES,
@@ -9,6 +10,7 @@ import {
   SEARCH_ITEM,
   SEARCH_CLEAR
 } from "../actions/types";
+
 const movieState = {
   movies: [],
   genres: [],

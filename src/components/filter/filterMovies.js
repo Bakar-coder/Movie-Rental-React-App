@@ -6,7 +6,6 @@ import "./filter.css";
 
 const FilterMovies = ({ searchMovie, clearSearch }) => {
   const text = useRef("");
-
   const handleInputChange = e => {
     return text.current.value !== ""
       ? searchMovie(e.target.value)
